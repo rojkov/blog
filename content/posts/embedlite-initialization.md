@@ -8,6 +8,8 @@ I guess some people may find useful the couple of words below on how
 EmbedLite embedding is initialized. I've written them mostly because I'm trying
 to wrap my head around the topic myself. So please let me know if you see non-sense.
 
+<!--more-->
+
 Initialization procedure
 ========================
 

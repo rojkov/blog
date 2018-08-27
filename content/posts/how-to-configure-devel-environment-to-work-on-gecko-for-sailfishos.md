@@ -8,6 +8,8 @@ It turned out that newcomers have difficulties with setting up their development
 environment to work on Gecko integration with Nemo, SailfishOS or any other
 Mer-based Linux. Hence this post.
 
+<!--more-->
+
 Configure development environment
 =================================
 
