@@ -111,21 +111,17 @@ implemenent the interface `nsIWebBrowser`. The reference to this object is kept
 in the private member `EmbedLiteViewThreadChild::mWebBrowser`.
 
 Then we create an interface instance for the `nsIBaseWindow` interface out of the
-web browser object.
-
-> Remember that interface instances of different types can refer to the same
-> physical object implementing more than one interfaces.
+web browser object. Remember that interface instances of different types can
+refer to the same physical object implementing more than one interfaces.
 
 Also we create a fake browser widget `EmbedLitePuppetWidget` inheriting to
 `PuppetWidget` and implementing the interface `nsIWidget`. This is how this
 abstraction is described in Gecko code:
 
-```text
-This "puppet widget" isn't really a platform widget.  It's intended
-to be used in widgetless rendering contexts, such as sandboxed
-content processes.  If any "real" widgetry is needed, the request
-is forwarded to and/or data received from elsewhere.
-```
+> &laquo;This "puppet widget" isn't really a platform widget.  It's intended
+> to be used in widgetless rendering contexts, such as sandboxed
+> content processes.  If any "real" widgetry is needed, the request
+> is forwarded to and/or data received from elsewhere.&raquo;
 
 Then we initialize the base window with the widget:
 
@@ -140,12 +136,10 @@ The important part is that we initialize the window which hasn't been created
 yet, because as said in the documentation for the property
 `nsIWebBrowser.containerWindow`:
 
-```text
-The embedder must create one chrome object for each browser object that
-is instantiated. The embedder must associate the two by setting this
-property to point to the chrome object before creating the browser
-window via the browser's nsIBaseWindow interface.
-```
+> &laquo;The embedder must create one chrome object for each browser object that
+> is instantiated. The embedder must associate the two by setting this
+> property to point to the chrome object before creating the browser
+> window via the browser's nsIBaseWindow interface.&raquo;
 
 After that we
 
@@ -168,8 +162,8 @@ After that we
 such as viewport calculations and handling scroll events originating from
 content.
 
-> The current goal is to make TabChildHelper share functionality with upstream
-> dom/ipc/TabChild class, in order to reduce maintenance burden.
+The current goal is to make TabChildHelper share functionality with upstream
+dom/ipc/TabChild class, in order to reduce maintenance burden.
 
 On compositing
 ==============
@@ -193,11 +187,11 @@ This method
 5. creates the image bridge thread connected to the compositor thread via
    the pair of actors `ImageBridgeParent` and `ImageBridgeChild`.
 
-> The `PImageBridge` protocol is used to allow isolated threads or processes
-> to push frames directly to the compositor thread/process (from the content
-> thread) without relying on the main thread which might be too busy dealing
-> with content script. Again only one image bridge thread per gecko process
-> can be created.
+The `PImageBridge` protocol is used to allow isolated threads or processes
+to push frames directly to the compositor thread/process (from the content
+thread) without relying on the main thread which might be too busy dealing
+with content script. Again only one image bridge thread per gecko process
+can be created.
 
 In addition to that the fake widget creates
 
@@ -215,7 +209,7 @@ compositor thread which is supposed to render the images into a GL context.
 See [this page](https://wiki.mozilla.org/Gecko:Overview#Graphics) for a better
 explanation of compositing.
 
-> Currently the `EmbedLiteCompositorParent` class implements methods that are
-> called from the main UI thread. But the object is supposed to live in the
-> compositor thread. This may become a problem if UI and gecko get moved to
-> separate processes.
+**WARNING**: Currently the `EmbedLiteCompositorParent` class implements methods that are
+called from the main UI thread. But the object is supposed to live in the
+compositor thread. This may become a problem if UI and gecko get moved to
+separate processes.

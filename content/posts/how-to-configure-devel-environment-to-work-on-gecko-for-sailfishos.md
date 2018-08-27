@@ -25,8 +25,8 @@ can be found [here](https://wiki.merproject.org/wiki/Platform_SDK_and_SB2),
 but below is an extarct from there:
 
 ```shell
-  MerSDK$ sudo mkdir -p /parentroot/srv/mer/targets
-  MerSDK$ cd /tmp
+MerSDK$ sudo mkdir -p /parentroot/srv/mer/targets
+MerSDK$ cd /tmp
 ```
 
 Now in the current directory (which is /tmp) create a file `mer-target-armv7hl.ks`
@@ -79,7 +79,8 @@ echo 'arch = armv7hl' >> /etc/zypp/zypp.conf
 Then create a target:
 
 ```shell
-MerSDK$ sudo mic create fs mer-target-armv7hl.ks -o /parentroot/srv/mer/targets --pkgmgr=zypp --arch=armv7hl --tokenmap=MER_RELEASE:latest
+MerSDK$ sudo mic create fs mer-target-armv7hl.ks -o /parentroot/srv/mer/targets \
+                 --pkgmgr=zypp --arch=armv7hl --tokenmap=MER_RELEASE:latest
 MerSDK$ sudo chown -R $USER /parentroot/srv/mer/targets/mer-target-armv7hl/
 ```
 
@@ -95,7 +96,10 @@ Configure it to work with Scratchbox2 together:
 
 ```shell
 MerSDK$ cd /parentroot/srv/mer/targets/mer-target-armv7hl/
-MerSDK$ sb2-init -d -L "--sysroot=/" -C "--sysroot=/" -c /usr/bin/qemu-arm-dynamic -m sdk-build -n -N -t / mer-target-armv7hl /opt/cross/bin/armv7hl-meego-linux-gnueabi-gcc
+MerSDK$ sb2-init -d -L "--sysroot=/" -C "--sysroot=/" \
+                 -c /usr/bin/qemu-arm-dynamic -m sdk-build -n -N \
+                 -t / mer-target-armv7hl \
+                 /opt/cross/bin/armv7hl-meego-linux-gnueabi-gcc
 MerSDK$ sb2 -t mer-target-armv7hl -m sdk-install -R zypper ref --force
 ```
 
@@ -113,15 +117,33 @@ $ ./pull.all.sh
 After that install build requirements to the rootfs:
 ```shell
 MerSDK$ cd /home/rozhkov/tmp/mozilla-temp/xulrunner-package
-MerSDK$ grep --color=never BuildRequires mozilla-central/rpm/xulrunner-qt5.spec | sed -e '/^#.*$/d' | gawk -F: '{ print $2 }' | tr ',' ' '| xargs sb2 -t mer-target-armv7hl -m sdk-install -R zypper in
-MerSDK$ grep --color=never BuildRequires qtmozembed/rpm/qtmozembed-qt5.spec | sed -e '/^#.*$/d' | gawk -F: '{ print $2 }' | tr ',' ' '|xargs sb2 -t mer-target-armv7hl -m sdk-install -R zypper in
-MerSDK$ grep --color=never BuildRequires embedlite-components/rpm/embedlite-components-qt5.spec | sed -e '/^#.*$/d' | gawk -F: '{ print $2 }' | tr ',' ' '|xargs sb2 -t mer-target-armv7hl -m sdk-install -R zypper in
-MerSDK$ grep --color=never BuildRequires sailfish-browser/rpm/sailfish-browser.spec | sed -e '/^#.*$/d' | gawk -F: '{ print $2 }' | tr ',' ' '|xargs sb2 -t mer-target-armv7hl -m sdk-install -R zypper in
+MerSDK$ grep --color=never BuildRequires mozilla-central/rpm/xulrunner-qt5.spec | \
+        sed -e '/^#.*$/d' | \
+        gawk -F: '{ print $2 }' | \
+        tr ',' ' '| \
+        xargs sb2 -t mer-target-armv7hl -m sdk-install -R zypper in
+MerSDK$ grep --color=never BuildRequires qtmozembed/rpm/qtmozembed-qt5.spec | \
+        sed -e '/^#.*$/d' | \
+        gawk -F: '{ print $2 }' | \
+        tr ',' ' '| \
+        xargs sb2 -t mer-target-armv7hl -m sdk-install -R zypper in
+MerSDK$ grep --color=never BuildRequires embedlite-components/rpm/embedlite-components-qt5.spec | \
+        sed -e '/^#.*$/d' | \
+        gawk -F: '{ print $2 }' | \
+        tr ',' ' '| \
+        xargs sb2 -t mer-target-armv7hl -m sdk-install -R zypper in
+MerSDK$ grep --color=never BuildRequires sailfish-browser/rpm/sailfish-browser.spec | \
+        sed -e '/^#.*$/d' | \
+        gawk -F: '{ print $2 }' | \
+        tr ',' ' '| \
+        xargs sb2 -t mer-target-armv7hl -m sdk-install -R zypper in
 ```
 
 Remove the packages that are not really needed for engine development:
 ```shell
-MerSDK$ sb2 -t mer-target-armv7hl -m sdk-install -R zypper rm qtmozembed-qt5 qtmozembed-qt5-devel xulrunner-qt5 xulrunner-qt5-devel
+MerSDK$ sb2 -t mer-target-armv7hl -m sdk-install -R \
+             zypper rm qtmozembed-qt5 qtmozembed-qt5-devel \
+                       xulrunner-qt5 xulrunner-qt5-devel
 ```
 
 And finally build the stuff with the `build.sh` script::
@@ -155,12 +177,15 @@ run test example:
 /home/rozhkov/tmp/mozilla-temp/xulrunner-package/objdir-mer/dist/bin/sailfish-browser about:license
 ```
 
-> Due to a bug in gecko build scripts you might encounter an error message about missing `config.status`
-> file after the build configuration phase. In this case just copy the file `objdir-mer/config.status`
-> to your working directory and run `build.sh` again:
+Due to a bug in gecko build scripts you might encounter an error message about
+missing `config.status` file after the build configuration phase. In this case
+just copy the file `objdir-mer/config.status` to your working directory and
+run `build.sh` again:
 
-     MerSDK$ cp objdir-mer/config.status .
-     MerSDK$ sb2 -t mer-target-armv7hl -m sdk-build ./build.sh -j -t mer
+```shell
+MerSDK$ cp objdir-mer/config.status .
+MerSDK$ sb2 -t mer-target-armv7hl -m sdk-build ./build.sh -j -t mer
+```
 
 The best way to test the build is to mount the working directory into the
 device's file system so that the path to the built binaries on the device is
@@ -193,7 +218,7 @@ If you change something inside other gecko components, e.g. under `mozilla-centr
 or `mozilla-central/gfx`,
 then you'll need to rebuild the outdated object files too with the option `-o`:
 ```shell
-  MerSDK$ sb2 -t mer-target-armv7hl -m sdk-build ./build.sh -j -t mer -o dom/events,gfx
+MerSDK$ sb2 -t mer-target-armv7hl -m sdk-build ./build.sh -j -t mer -o dom/events,gfx
 ```
 
 This way there is no need to rebuild all other object files. And if you're working
@@ -209,18 +234,18 @@ Useful info
 If you're working on JS components don't forget to reset the start up cache
 before testing your work:
 ```shell
-  [nemo@localhost-001 xulrunner-package]$ rm -fr ~/.mozilla/mozembed/startupCache/
+[nemo@localhost-001 xulrunner-package]$ rm -fr ~/.mozilla/mozembed/startupCache/
 ```
 
 If you need to switch on [logging](https://wiki.mozilla.org/MailNews:Logging)
 in the engine then define `NSPR_LOG_MODULES` environment variable:
 ```shell
-  [nemo@localhost-001 xulrunner-package]$ export NSPR_LOG_MODULES=TabChildHelper:5,EmbedLiteTrace:5,EmbedContentController:5
+[nemo@localhost-001 xulrunner-package]$ export NSPR_LOG_MODULES=TabChildHelper:5,EmbedLiteTrace:5,EmbedContentController:5
 ```
 
-> In order to see logging from components other than EmbedLite you'd need to
-> have a so called debug build of xulrunner. Use the option `-d` of the
-> `build.sh` script to create it.
+In order to see logging from components other than EmbedLite you'd need to
+have a so called debug build of xulrunner. Use the option `-d` of the
+`build.sh` script to create it.
 
 Unfortunately the gecko build system is based on python which runs under qemu
 inside Scratchbox2 by default (unless you do x86 build). It is possible to accelerate python though.
