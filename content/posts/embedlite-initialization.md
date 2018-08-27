@@ -10,8 +10,7 @@ to wrap my head around the topic myself. So please let me know if you see non-se
 
 <!--more-->
 
-Initialization procedure
-========================
+### Initialization procedure
 
 First of all a toolkit specific embedding (e.g. qtmozembed) must pre-configure
 embedlite with the function `LoadEmbedLite()`. Then we should instantiate
@@ -67,8 +66,7 @@ the main UI thread (the parent actor receives the `async Initialized()`
 message). Also the "embedliteInitialized" message is broadcasted with
 `nsIObserverService`. From now on we can create actual web views.
 
-WebView creation
-================
+### WebView creation
 
 For every native widget representing a web view there should exist a corresponding
 instance of `EmbedLiteView` class. This class exposes public API for web views
@@ -104,8 +102,7 @@ The parent end point directly calls the callback `ViewInitialized()` registered
 by the toolkit specific embedding. Now the native widget is notified that
 its web view is fully functional.
 
-Web view initialization
-=======================
+### Web view initialization
 
 So, what actually happens inside `EmbedLIteViewThreadChild::InitGeckoWindow()`?
 First of all we create an object representing web browser, that is the object must
@@ -167,8 +164,7 @@ content.
 The current goal is to make TabChildHelper share functionality with upstream
 dom/ipc/TabChild class, in order to reduce maintenance burden.
 
-On compositing
-==============
+### On compositing
 
 The code of `EmbedLitePuppetWidget` basically is a copy-paste from mozilla's
 `PuppetWidget` class. Would be nice to refactor it to avoid code duplication.

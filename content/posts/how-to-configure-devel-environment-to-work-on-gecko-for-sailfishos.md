@@ -10,8 +10,7 @@ Mer-based Linux. Hence this post.
 
 <!--more-->
 
-Configure development environment
-=================================
+### Configure development environment
 
 Gecko engine development for embedded devices is quite resource consuming.
 If you want to try it you'd better have a mighty computer running Linux and
@@ -230,8 +229,7 @@ makes the script to rebuild only the engine:
 MerSDK$ sb2 -t mer-target-armv7hl -m sdk-build ./build.sh -e -t mer
 ```
 
-Useful info
------------
+### Useful info
 
 If you're working on JS components don't forget to reset the start up cache
 before testing your work:
