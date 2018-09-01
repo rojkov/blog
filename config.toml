@@ -1,5 +1,25 @@
-baseURL = "http://example.org/"
+baseURL = "https://rojkov.github.io/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Dmitry Rozhkov"
 theme = "bilberry"
 disqusShortname = "idempotent"
+permanentTopNav = false
+
+enableRobotsTXT = true
+
+[params]
+  author = "rojkov"
+  description = "Dmitry Rozhkov's personal blog."
+  keywords = "software engineering,programming"
+
+  # How many articles should be displayed at once?
+  paginate = 7
+
+  showFooter = true
+  showHeaderLanguageChooser = false
+  showFooterLanguageChooser = false
+  copyrightBy = "by rojkov"
+  copyrightUrl = "https://github.com/rojkov"
+
+  showSocialMedia = true
+  github     = "https://github.com/rojkov"
