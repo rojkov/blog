@@ -1,3 +1,4 @@
 [submodule "themes/bilberry"]
 	path = themes/bilberry
-	url = https://github.com/Lednerb/bilberry-hugo-theme.git
+	url = git@github.com:rojkov/bilberry-hugo-theme.git
+	branch = rojkov
