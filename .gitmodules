@@ -5,3 +5,7 @@
 [submodule "themes/material"]
 	path = themes/material
 	url = https://github.com/Xzya/hugo-material-blog.git
+[submodule "public"]
+	path = public
+	url = git@github.com:rojkov/rojkov.github.io.git
+	branch = master
