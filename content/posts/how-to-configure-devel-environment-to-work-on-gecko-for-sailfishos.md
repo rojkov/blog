@@ -33,9 +33,8 @@ MerSDK$ cd /tmp
 Now in the current directory (which is /tmp) create a file `mer-target-armv7hl.ks`
 with the following content:
 
-```
+```shell
 # -*-mic2-options-*- --arch=armv7hl -*-mic2-options-*-
-
 lang en_US.UTF-8
 keyboard us
 timezone --utc UTC

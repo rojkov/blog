@@ -124,7 +124,7 @@ abstraction is described in Gecko code:
 
 Then we initialize the base window with the widget:
 
-```c++
+```cpp
 rv = baseWindow->InitWindow(0, mWidget, 0, 0, mViewSize.width, mViewSize.height);
 if (NS_FAILED(rv)) {
     return;

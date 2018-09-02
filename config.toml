@@ -1,25 +1,14 @@
-baseURL = "https://rojkov.github.io/"
+baseurl = "https://rojkov.github.io/"
 languageCode = "en-us"
+defaultContentLanguage = "en"
+
 title = "Dmitry Rozhkov"
-theme = "bilberry"
+theme = "material"
 disqusShortname = "idempotent"
-permanentTopNav = false
+paginate = 7
 
 enableRobotsTXT = true
+pygmentsCodeFences = true
+pygmentsStyle = "github"
+copyright = "© 2018 Dmitry Rozhkov"
 
-[params]
-  author = "rojkov"
-  description = "Dmitry Rozhkov's personal blog."
-  keywords = "software engineering,programming"
-
-  # How many articles should be displayed at once?
-  paginate = 7
-
-  showFooter = true
-  showHeaderLanguageChooser = false
-  showFooterLanguageChooser = false
-  copyrightBy = "by rojkov"
-  copyrightUrl = "https://github.com/rojkov"
-
-  showSocialMedia = true
-  github     = "https://github.com/rojkov"

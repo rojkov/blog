@@ -2,3 +2,6 @@
 	path = themes/bilberry
 	url = git@github.com:rojkov/bilberry-hugo-theme.git
 	branch = rojkov
+[submodule "themes/material"]
+	path = themes/material
+	url = https://github.com/Xzya/hugo-material-blog.git
