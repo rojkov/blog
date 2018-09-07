@@ -12,3 +12,12 @@ pygmentsCodeFences = true
 pygmentsStyle = "github"
 copyright = "© 2018 Dmitry Rozhkov"
 
+# English
+[languages.en]
+  languageName = "English"
+
+# Русский
+[languages.ru]
+  languageName = "Русский"
+  title = "Дмитрий Рожков"
+  copyright = "© 2018 Дмитрий Рожков"
