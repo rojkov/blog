@@ -1,5 +1,5 @@
 ---
-title: "A Case of Debugging Kubernetes Deployment"
+title: "Debugging a Kubernetes Deployment"
 date: 2018-09-09T16:23:22+03:00
 draft: false
 ---
