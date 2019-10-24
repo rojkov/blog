@@ -2,15 +2,15 @@ baseurl = "https://rojkov.github.io/"
 languageCode = "en-us"
 defaultContentLanguage = "en"
 
-title = "Dmitry&nbsp;Rozhkov"
-theme = "material"
-disqusShortname = "idempotent"
+title = "Dmitry Rozhkov"
+theme = "bilberry"
+#disqusShortname = "idempotent"
 paginate = 7
 
 enableRobotsTXT = true
 pygmentsCodeFences = true
 pygmentsStyle = "github"
-copyright = "© 2018 Dmitry Rozhkov"
+copyright = "© 2019 Dmitry Rozhkov"
 
 # English
 [languages.en]
@@ -19,5 +19,5 @@ copyright = "© 2018 Dmitry Rozhkov"
 # Русский
 [languages.ru]
   languageName = "Русский"
-  title = "Дмитрий&nbsp;Рожков"
-  copyright = "© 2018 Дмитрий Рожков"
+  title = "Дмитрий Рожков"
+  copyright = "© 2019 Дмитрий Рожков"
