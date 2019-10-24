@@ -2,6 +2,7 @@
 title: "EmbedLite Initialization"
 date: 2014-03-02T15:08:04+03:00
 draft: false
+noSummary: false
 ---
 
 I guess some people may find useful the couple of words below on how

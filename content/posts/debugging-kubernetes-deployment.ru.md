@@ -2,6 +2,7 @@
 title: "Пример отладки экземпляра Deployment в Kubernetes"
 date: 2018-09-09T16:23:22+03:00
 draft: false
+noSummary: false
 ---
 
 Не так давно я просматривал список багрепортов в репозитории

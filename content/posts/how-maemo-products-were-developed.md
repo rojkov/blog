@@ -2,6 +2,7 @@
 title: "How Maemo Products Were Developed"
 date: 2019-10-21T20:29:00+03:00
 draft: false
+noSummary: false
 ---
 
 Any project that goes beyond being a mere personal hobby is always a

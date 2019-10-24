@@ -2,6 +2,7 @@
 title: "How to Configure Devel Environment to Work on Gecko for Sailfishos"
 date: 2014-03-20T15:44:36+03:00
 draft: false
+noSummary: false
 ---
 
 It turned out that newcomers have difficulties with setting up their development
