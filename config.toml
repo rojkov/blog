@@ -9,7 +9,7 @@ paginate = 7
 
 enableRobotsTXT = true
 pygmentsCodeFences = true
-pygmentsStyle = "github"
+pygmentsStyle = "dracula"
 copyright = "© 2019 Dmitry Rozhkov"
 
 # English
