@@ -27,7 +27,7 @@ is the need for managers managing the hierarchies.
 At Nokia the hierarchical structure was huge and had more than one
 dimension.
 
-Perhaps it makes sense to start with *platforms*. It is a very loaded
+Perhaps it makes sense to begin with *platforms*. It is a very loaded
 term, but at Nokia "platform" was used mostly to denote a base operating
 system on which products were built. There were [S40](https://en.wikipedia.org/wiki/Series_40),
 [S60](https://en.wikipedia.org/wiki/Series_60), WindowsPhone and
@@ -46,8 +46,8 @@ for her product's timely releases with certain functionality.
 
 In addition to that there were configuration managers responsible for
 product configurations targeting different markets. For example the Maps
-application for Nokia N9 selling in Iran knew nothing about Israel,
-users in China saw Taiwan as PRC's territory and so on. In some funny
+application for Nokia N9 selling in China users saw Taiwan as PRC's
+territory and so on. In some funny
 markets the Camera app must produce "shutter" sound when taking a
 picture, so the setting for disabling the sound must be excluded.
 
